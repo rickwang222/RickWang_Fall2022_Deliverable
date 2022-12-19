@@ -1,0 +1,25 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 5:21:46 PM On 12/18/2022
+
+Output: Gerber Files
+Type  : Gerber
+From  : PCB Document [Arduino_3D_Extension..PcbDoc]
+   Generated File[Arduino_3D_Extension..GTO]
+   Generated File[Arduino_3D_Extension..GTP]
+   Generated File[Arduino_3D_Extension..GTS]
+   Generated File[Arduino_3D_Extension..GTL]
+   Generated File[Arduino_3D_Extension..GBL]
+   Generated File[Arduino_3D_Extension..GBS]
+   Generated File[Arduino_3D_Extension..GBP]
+   Generated File[Arduino_3D_Extension..GBO]
+   Generated File[Arduino_3D_Extension..GKO]
+   Generated File[Arduino_3D_Extension..RUL]
+   Generated File[Arduino_3D_Extension..EXTREP]
+   Generated File[Arduino_3D_Extension..REP]
+
+
+Files Generated   : 12
+Documents Printed : 0
+
+Finished Output Generation At 5:21:46 PM On 12/18/2022

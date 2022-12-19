@@ -1,0 +1,450 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12/18/2022</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">3:29:05 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc" class="file"><acronym title="E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc">E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">34</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Waived Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">1</td></tr>
+</table>
+</td>
+</table><a name="IDZJ5CIARVMOCLHHZI5CTQKVREGC05RAYETYB3TKHSHQ222KKLAT3H"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXI0R32MMG3JYPYU4DNATUUSFXDJZQ5I2JCDW1NHKURQPZVPGNNJ">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4X1M535KSBS3KWD5KP40TDISTLDV3CPCGSKVU5O1IHQPIZYZIX3M">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJ3ALKWHD5BT5P4J2WFSKTNEPBJ5NQTWBQLA4UUDY5ZZDDKRS1TZL">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCJDMM2Y30OAYCY4M41F3XR1G504FRPZSHADFVNGP244OMNVSIIL">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDN2V04FMBJEYHL3VPVV5N1OBAKNKRQPCROFAXSNN1OBUYKVMJWCXE">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0ZUMYU4D3UGOHXICDLHPUQ3F3KAUD5P3IV5OSDH5XEFNIQHPGQOM">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0I0KRMLNLVDEHLCGMFQGQI5MXIOQDHXRYQYOABEDA33RWQEFGT3B">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDX0QNI34GTBYSJFBBYSLKRP0HGLR1V3KQ5WHMWCFP2CEWFRH2QCKD">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3A2OWRNI0Z3WCCT3A2I0BU3MKNUN155VEMOQLUHWZMFRRLFJ1XIB">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">34</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCJ01VZABPCHQBNZ0KHDMTRQQXLGGQFXTREFX1KC5OC4YM4E3HLEI">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDH1Z05ZRYGA1KK552SEVLDRQNDETDDOF1L3Z4QWOHDC2CTYZ2JHPG">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKYCFARSXUX4RLHC3HCNGKWVA2E34X5SVP1ISWROKWCP3HGRIEWKE">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">34</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Waived Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFSI3JQE1KZWHKRA5OQDNUCL4HFWFPTRLYXYDGKJ2G2J05POVTOGK">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">1</td>
+</tr>
+</table><br><a name="IDWR4DVWFWJHODKG4HRNP4KYKJ3OBUL0YHZG0TK1KW5UXHWC1EMTOM"><h2>Rule Violations</h2></a><a name="ID3A2OWRNI0Z3WCCT3A2I0BU3MKNUN155VEMOQLUHWZMFRRLFJ1XIB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2034.611mil|Location2.Y=2045.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2034.611mil|Location2.Y=2045.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-1(58.42mm,19.905mm) on Top Layer And Track (57.92mm,20.805mm)(57.92mm,21.105mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2034.611mil|Location2.Y=2045.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2034.611mil|Location2.Y=2045.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-1(58.42mm,19.905mm) on Top Layer And Track (57.92mm,20.805mm)(58.92mm,20.805mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2034.611mil|Location2.Y=2045.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2034.611mil|Location2.Y=2045.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-1(58.42mm,19.905mm) on Top Layer And Track (58.92mm,20.805mm)(58.92mm,21.105mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2064.139mil|Location2.Y=2075.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2064.139mil|Location2.Y=2075.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-2(58.42mm,22.005mm) on Top Layer And Track (57.92mm,20.805mm)(57.92mm,21.105mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2064.139mil|Location2.Y=2075.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2064.139mil|Location2.Y=2075.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-2(58.42mm,22.005mm) on Top Layer And Track (58.92mm,20.805mm)(58.92mm,21.105mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=1734.611mil|Location2.Y=1745.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=1734.611mil|Location2.Y=1745.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-1(58.42mm,12.285mm) on Top Layer And Track (57.92mm,13.185mm)(57.92mm,13.485mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=1734.611mil|Location2.Y=1745.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=1734.611mil|Location2.Y=1745.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-1(58.42mm,12.285mm) on Top Layer And Track (57.92mm,13.185mm)(58.92mm,13.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=1734.611mil|Location2.Y=1745.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=1734.611mil|Location2.Y=1745.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-1(58.42mm,12.285mm) on Top Layer And Track (58.92mm,13.185mm)(58.92mm,13.485mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=1764.139mil|Location2.Y=1775.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=1764.139mil|Location2.Y=1775.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-2(58.42mm,14.385mm) on Top Layer And Track (57.92mm,13.185mm)(57.92mm,13.485mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=1764.139mil|Location2.Y=1775.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=1764.139mil|Location2.Y=1775.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-2(58.42mm,14.385mm) on Top Layer And Track (58.92mm,13.185mm)(58.92mm,13.485mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2709.611mil|Location2.Y=2720.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2709.611mil|Location2.Y=2720.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-1(58.42mm,37.05mm) on Top Layer And Track (57.92mm,37.95mm)(57.92mm,38.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2709.611mil|Location2.Y=2720.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2709.611mil|Location2.Y=2720.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-1(58.42mm,37.05mm) on Top Layer And Track (57.92mm,37.95mm)(58.92mm,37.95mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2709.611mil|Location2.Y=2720.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2709.611mil|Location2.Y=2720.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-1(58.42mm,37.05mm) on Top Layer And Track (58.92mm,37.95mm)(58.92mm,38.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2739.139mil|Location2.Y=2750.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2739.139mil|Location2.Y=2750.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-2(58.42mm,39.15mm) on Top Layer And Track (57.92mm,37.95mm)(57.92mm,38.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2739.139mil|Location2.Y=2750.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2739.139mil|Location2.Y=2750.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-2(58.42mm,39.15mm) on Top Layer And Track (58.92mm,37.95mm)(58.92mm,38.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2434.611mil|Location2.Y=2445.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2434.611mil|Location2.Y=2445.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-1(58.42mm,30.065mm) on Top Layer And Track (57.92mm,30.965mm)(57.92mm,31.265mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2434.611mil|Location2.Y=2445.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2434.611mil|Location2.Y=2445.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-1(58.42mm,30.065mm) on Top Layer And Track (57.92mm,30.965mm)(58.92mm,30.965mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2434.611mil|Location2.Y=2445.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2434.611mil|Location2.Y=2445.861mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-1(58.42mm,30.065mm) on Top Layer And Track (58.92mm,30.965mm)(58.92mm,31.265mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2464.139mil|Location2.Y=2475.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3474.69mil|Location2.X=3485.94mil|Location1.Y=2464.139mil|Location2.Y=2475.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-2(58.42mm,32.165mm) on Top Layer And Track (57.92mm,30.965mm)(57.92mm,31.265mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2464.139mil|Location2.Y=2475.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3514.06mil|Location2.X=3525.31mil|Location1.Y=2464.139mil|Location2.Y=2475.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-2(58.42mm,32.165mm) on Top Layer And Track (58.92mm,30.965mm)(58.92mm,31.265mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=1874.375mil|Location2.Y=1885.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=1874.375mil|Location2.Y=1885.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad p1-1(65.405mm,16.51mm) on Multi-Layer And Track (64.135mm,15.24mm)(64.135mm,20.32mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=1831.649mil|Location2.Y=1842.899mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=1831.649mil|Location2.Y=1842.899mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad p1-1(65.405mm,16.51mm) on Multi-Layer And Track (64.135mm,15.24mm)(66.675mm,15.24mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=1874.375mil|Location2.Y=1885.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=1874.375mil|Location2.Y=1885.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad p1-1(65.405mm,16.51mm) on Multi-Layer And Track (66.675mm,15.24mm)(66.675mm,20.32mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=1974.375mil|Location2.Y=1985.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=1974.375mil|Location2.Y=1985.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad p1-2(65.405mm,19.05mm) on Multi-Layer And Track (64.135mm,15.24mm)(64.135mm,20.32mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=2017.101mil|Location2.Y=2028.351mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=2017.101mil|Location2.Y=2028.351mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad p1-2(65.405mm,19.05mm) on Multi-Layer And Track (64.135mm,20.32mm)(66.675mm,20.32mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=1974.375mil|Location2.Y=1985.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=1974.375mil|Location2.Y=1985.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad p1-2(65.405mm,19.05mm) on Multi-Layer And Track (66.675mm,15.24mm)(66.675mm,20.32mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=2474.375mil|Location2.Y=2485.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=2474.375mil|Location2.Y=2485.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-1(65.405mm,31.75mm) on Multi-Layer And Track (64.135mm,30.48mm)(64.135mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=2431.649mil|Location2.Y=2442.899mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=2431.649mil|Location2.Y=2442.899mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-1(65.405mm,31.75mm) on Multi-Layer And Track (64.135mm,30.48mm)(66.675mm,30.48mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=2474.375mil|Location2.Y=2485.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=2474.375mil|Location2.Y=2485.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-1(65.405mm,31.75mm) on Multi-Layer And Track (66.675mm,30.48mm)(66.675mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.658mil|Location2.X=3737.908mil|Location1.Y=2535.005mil|Location2.Y=2546.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.658mil|Location2.X=3737.908mil|Location1.Y=2535.005mil|Location2.Y=2546.255mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-2(65.405mm,34.29mm) on Multi-Layer And Track (64.135mm,30.48mm)(64.135mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.091mil|Location2.X=3823.341mil|Location1.Y=2535.005mil|Location2.Y=2546.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.091mil|Location2.X=3823.341mil|Location1.Y=2535.005mil|Location2.Y=2546.255mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-2(65.405mm,34.29mm) on Multi-Layer And Track (66.675mm,30.48mm)(66.675mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=2674.375mil|Location2.Y=2685.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3726.649mil|Location2.X=3737.899mil|Location1.Y=2674.375mil|Location2.Y=2685.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-3(65.405mm,36.83mm) on Multi-Layer And Track (64.135mm,30.48mm)(64.135mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=2717.101mil|Location2.Y=2728.351mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769.375mil|Location2.X=3780.625mil|Location1.Y=2717.101mil|Location2.Y=2728.351mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-3(65.405mm,36.83mm) on Multi-Layer And Track (64.135mm,38.1mm)(66.675mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=2674.375mil|Location2.Y=2685.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3812.101mil|Location2.X=3823.351mil|Location1.Y=2674.375mil|Location2.Y=2685.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.17mm &lt; 0.254mm) Between Pad P2-3(65.405mm,36.83mm) on Multi-Layer And Track (66.675mm,30.48mm)(66.675mm,38.1mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.17mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3VSPNAVS3CWYC5YEW5JWOKJSNNWOI0ECGGS1Q1H23U2V1KSFUX2P"><h2>Waived Violations</h2></a><a name="IDFSI3JQE1KZWHKRA5OQDNUCL4HFWFPTRLYXYDGKJ2G2J05POVTOGK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="waived">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2766mil|Location2.X=2934mil|Location1.Y=1296mil|Location2.Y=1364mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Altium\AltiumArduinoR3_UNOSheild\Arduino_3D_Extension..PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2766mil|Location2.X=2934mil|Location1.Y=1296mil|Location2.Y=1364mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad POWER-3(40.64mm,2.54mm) on Multi-Layer And Pad POWER-2(43.18mm,2.54mm) on Multi-Layer </acronym></a><br>Waived by Haoran Wang at 12/18/2022 3:10:30 PM</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
