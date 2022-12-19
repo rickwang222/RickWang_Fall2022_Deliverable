@@ -1,11 +1,0 @@
-Device,Value,Part Number,PCB,Link
- LED RED CLEAR 0805 SMD,Red,150080RS75000,D1,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080RS75000/4489918
-LED BLUE CLEAR 0805 SMD,Blue,150080BS75000,D2,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080BS75000/4489912
-LED YELLOW CLEAR 0805 SMD,Yello,150080YS75000,D3,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080YS75000/4489927
-"LED GREEN CLEAR 0805 SMD",Green,150080GS75000,D4,https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150080GS75000/4489915
-RES SMD 300 OHM 5% 1/10W 0603,300R,"ERJ-3GEYJ301V",R2,https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-3GEYJ301V/29175
-RES SMD 140 OHM 1% 1/10W 0603,140R,ERJ-3EKF1400V,"R1, R3, R4",https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-3EKF1400V/196126
-RES 10K OHM 1% 1/8W 0603,10k,RNCP0603FTD10K0,R5,https://www.digikey.com/en/products/detail/stackpole-electronics-inc/RNCP0603FTD10K0/2240139
-"TERM BLOCK 2POS 45DEG 3.81MM PCB",,691412320002,"J1, J3, J5, J7, J9",https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/691412320002/6644223
-"3.81 MM TERMINAL BLOCK, 45 ENTR",,691418320003,"J2, J4, J6, J8, J10",https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/691418320003/11477982
-SWITCH TACTILE SPST-NO 0.05A 24V,,FSM4JSMA,S1,https://www.digikey.com/en/products/detail/te-connectivity-alcoswitch-switches/FSM4JSMA/525821
